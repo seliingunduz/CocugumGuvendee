@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell
+    x:Class="CocugumGuvende.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:CocugumGuvende"
+    Shell.NavBarIsVisible="True">
+ 
+
+   
+    <ShellContent
+        Route="ebeveyn-anasayfa"
+        Title="Ebeveyn Ana Sayfa"
+        ContentTemplate="{DataTemplate pages:EbeveynAnaSayfa}" />
+
+   
+    <ShellContent
+        Route="ebeveyn-harita"
+        Title="Harita"
+        ContentTemplate="{DataTemplate pages:EbeveynHarita}" />
+
+    <ShellContent
+        Route="qr-kayit"
+        Title="QR Oluştur"
+        ContentTemplate="{DataTemplate pages:QRKayitSayfasi}" />
+
+    <ShellContent
+        Route="qr-giris"
+        Title="QR Giriş"
+        ContentTemplate="{DataTemplate pages:QRGirisSayfasi}" />
+
+</Shell>

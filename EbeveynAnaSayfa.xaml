@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CocugumGuvende.EbeveynAnaSayfa"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#0f0f0f}">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
+
+            <!-- ÜST BAR -->
+            <Grid Padding="16,12,16,0" ColumnDefinitions="*,Auto,Auto" VerticalOptions="Center">
+                <Label Text="Ebeveyn Ana Sayfa"
+                       FontSize="18"
+                       TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                <Button Grid.Column="1"
+                        x:Name="BtnCocukSec"
+                        Text="Çocuk seç"
+                        Padding="12,6"
+                        Clicked="CocukSecTikla"
+                        BackgroundColor="#2563EB" TextColor="White"
+                        CornerRadius="14"/>
+                <ImageButton Grid.Column="2"
+                             Source="chat.png"
+                             Clicked="MesajTikla"
+                             BackgroundColor="Transparent"
+                             WidthRequest="40"
+                             HeightRequest="40"
+                             Padding="6"
+                             HorizontalOptions="End" />
+            </Grid>
+
+            <!-- ÇOCUK EKLE PANELİ (İLK KURULUM/KULLANICI İSTERSE) -->
+            <Grid x:Name="PanelCocukEkle" Padding="16,10,16,0" IsVisible="False">
+                <Frame HasShadow="True" CornerRadius="18" Padding="16">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="Hoş geldiniz 👋" FontAttributes="Bold" FontSize="20"/>
+                        <Label Text="Henüz bir çocuk ekli görünmüyor. Aşağıya çocuğun adını yazın ve 'QR Oluştur' deyin. Çocuğun cihazından bu QR'ı okutarak eşleştirme yapacaksınız."
+                               TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                        <Entry x:Name="TxtCocukAd" Placeholder="Çocuğun adı" />
+                        <HorizontalStackLayout Spacing="10">
+                            <Button Text="QR Oluştur"
+                                    x:Name="BtnQrOlustur"
+                                    Clicked="QrOlusturTikla"
+                                    BackgroundColor="#16A34A" TextColor="White" Padding="16,10" CornerRadius="14"/>
+                            <Button Text="Vazgeç" Clicked="CocukEkleVazgecTikla" Padding="16,10" CornerRadius="14"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+
+            <!-- ASIL İÇERİK (HARİTA + GEÇMİŞ) -->
+            <VerticalStackLayout x:Name="PanelIcerik" Spacing="0" IsVisible="False">
+
+                <!-- Mini harita kartı -->
+                <Grid Padding="16,12,16,0">
+                    <Frame HasShadow="True" CornerRadius="18" Padding="0">
+                        <Grid>
+                            <maps:Map x:Name="MiniHarita" HeightRequest="210" MapType="Street" />
+                            <Button Text="Haritayı Aç"
+                                    Clicked="HaritayiAcTikla"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="End"
+                                    Margin="12"
+                                    Padding="16,10"
+                                    CornerRadius="14"
+                                    BackgroundColor="#2563EB"
+                                    TextColor="White" />
+                        </Grid>
+                    </Frame>
+                </Grid>
+
+                <!-- Çocuk adı + zaman + pil -->
+                <Grid Padding="16,10,16,0" ColumnDefinitions="*,Auto,Auto">
+                    <Label x:Name="LblCocuk" Text="Çocuk" FontSize="20" FontAttributes="Bold" />
+                    <Label x:Name="LblZaman" Grid.Column="1" Margin="12,0,0,0"
+                           VerticalTextAlignment="Center"
+                           TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                    <Label x:Name="LblPil" Grid.Column="2" Margin="12,0,0,0"
+                           VerticalTextAlignment="Center"
+                           TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                </Grid>
+
+                <!-- Geçmiş -->
+                <Grid Padding="16,8,16,24">
+                    <Frame HasShadow="True" CornerRadius="18" Padding="14,12">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="GecmisiAcTikla" />
+                        </Frame.GestureRecognizers>
+
+                        <VerticalStackLayout Spacing="8">
+                            <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                                <Label Text="Geçmiş Konumlar" FontSize="18" FontAttributes="Bold" />
+                                <Button Grid.Column="1"
+                                        Text="Tümünü Gör"
+                                        Clicked="GecmisiAcTikla"
+                                        Padding="12,6"
+                                        BackgroundColor="#2563EB"
+                                        TextColor="White"
+                                        CornerRadius="12"/>
+                            </Grid>
+
+                            <CollectionView x:Name="GecmisListe" SelectionMode="None" HeightRequest="120">
+                                <CollectionView.EmptyView>
+                                    <Label Text="Henüz geçmiş kaydı yok."
+                                           TextColor="{AppThemeBinding Light=#9CA3AF, Dark=#A1A1AA}"
+                                           HorizontalOptions="Center" VerticalOptions="Center" />
+                                </CollectionView.EmptyView>
+
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Padding="6,8" RowDefinitions="Auto,Auto">
+                                            <Label Text="{Binding ZamanText}" FontAttributes="Bold" />
+                                            <Label Grid.Row="1" Text="{Binding DetayText}"
+                                                   TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" />
+                                            <BoxView Grid.RowSpan="2" HeightRequest="1" VerticalOptions="End"
+                                                     BackgroundColor="{AppThemeBinding Light=#E6E6E6, Dark=#333}"
+                                                     Margin="0,8,0,0"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </VerticalStackLayout>
+                    </Frame>
+                </Grid>
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

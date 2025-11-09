@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CocugumGuvende.QRKayitSayfasi"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.Maui.Controls"
+    xmlns:barcode="clr-namespace:ZXing.Net.Maui;assembly=ZXing.Net.Maui"
+    Title="Çocuk İçin QR">
+
+    <VerticalStackLayout Padding="24" Spacing="16">
+        <controls:BarcodeGeneratorView
+            x:Name="Qr"
+            Format="{x:Static barcode:BarcodeFormat.QrCode}"
+            Value="Hazırlanıyor..."
+            WidthRequest="260"
+            HeightRequest="260"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+        <Label Text="Bu QR'ı çocuğun telefonundan okutun." HorizontalOptions="Center"/>
+    </VerticalStackLayout>
+</ContentPage>

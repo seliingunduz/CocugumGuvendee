@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CocugumGuvende.EbeveynHarita"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+    Title="Harita"
+    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#111111}">
+    <Grid>
+        <maps:Map x:Name="TamHarita" MapType="Street" />
+    </Grid>
+</ContentPage>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CocugumGuvende.CocukAnaSayfa"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#111111}">
+
+    <Grid>
+        <maps:Map x:Name="Harita" MapType="Street" IsShowingUser="True" />
+
+
+
+        <Grid Padding="16" RowDefinitions="Auto,*" ColumnDefinitions="*,Auto">
+            <ImageButton
+            x:Name="BtnMesaj"
+            Source="chat.png"
+            Clicked="MesajTikla"
+            WidthRequest="48"
+            HeightRequest="48"
+            CornerRadius="24"
+            BackgroundColor="#2A2A2A"
+            Opacity="0.9"
+            Padding="8"
+            HorizontalOptions="End"
+            VerticalOptions="Start"
+            Margin="0,16,16,0" />
+        </Grid>
+
+      
+        <Grid VerticalOptions="End" Padding="0,0,0,24">
+            <Button x:Name="BtnSos"
+                    Clicked="SosTikla"
+                    HorizontalOptions="Center"
+                    WidthRequest="72"
+                    HeightRequest="72"
+                    CornerRadius="36"
+                    FontSize="16"
+                    Text="SOS"
+                    TextColor="White"
+                    BackgroundColor="#D7263D"/>
+        </Grid>
+    </Grid>
+</ContentPage>

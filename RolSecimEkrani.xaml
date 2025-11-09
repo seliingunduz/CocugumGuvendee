@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CocugumGuvende.RolSecimEkrani"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Rol Seç">
+
+    <VerticalStackLayout Padding="24" Spacing="16">
+
+        <Button Text="Ebeveyn"
+                FontSize="20"
+                Clicked="Ebeveyn_Clicked"/>
+
+        <Button Text="Çocuk"
+                FontSize="20"
+                Clicked="CocukQRGiris_Clicked"/>
+
+    </VerticalStackLayout>
+</ContentPage>

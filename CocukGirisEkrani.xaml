@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CocugumGuvende.CocukGirisEkrani"
+             Title="Çocuk Giriş">
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="12">
+            <Label Text="Çocuk Giriş" FontSize="20" />
+            <Entry x:Name="txtAd" Placeholder="Ad"/>
+            <Entry x:Name="txtAileKodu" Placeholder="Aile Kodu" Keyboard="Numeric"/>
+            <Button Text="Giriş Yap" Clicked="BtnGirisYap"/>
+            <Button Text="Kayıt Ol"  Clicked="BtnKayitOl"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
